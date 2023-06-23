@@ -45,15 +45,15 @@ barplot(tabB$prob,main="Graph of the Binomial Distribution",xlab="Value",ylab="P
 #' Solve the previous example using the hypergeometric distribution if we know
 #' that the gardener was picking from 400 pea seeds. Compare the probability distribution graphs.
 #' 
-#' a. All seeds will germinate
+#' a. all seeds will germinate
 #'
-#' b. No more than 6 seeds will germinate
+#' b. no more than 6 seeds will germinate
 #'
-#' c. Germinate at least 6-1 seeds
+#' c. germinate at least 6-1 seeds
 #'
-#' d. Calculate the mean and variance
+#' d. calculate the mean and variance
 #'
-#' e. Construct a probability distribution graph
+#' e. construct a probability distribution graph
 #' 
 #' **Solution a.** 
 dhyper(20, 320, 80, 20)
@@ -70,7 +70,7 @@ probH <- dhyper(xH, 320, 80, 20)
 tabH <- data.frame(hodnota=xH, prob=probH)
 barplot(tabH$prob,main="Graph of the Hypergeometric distribution",xlab="Value",ylab="Probability",names.arg = xH, col="orange")
 
-# Both distribution graphs from example 1 and example 2 are very similar in the acquired values.
+#' Both distribution graphs from example 1 and example 2 are very similar in acquired values.
 #'
 #' # Example 3
 #' 
@@ -80,8 +80,6 @@ barplot(tabH$prob,main="Graph of the Hypergeometric distribution",xlab="Value",y
 #' a. 15 interested parties visit the page
 #' b. the page will be visited by at least 6 interested parties
 #' c. what is the most likely number of visits in 10 minutes?
-#' d. construct a probability distribution graph for the first 15 values of the random variable (we consider a time interval of 20 minutes).
-#' e. generate 5 random distribution numbers (for an interval of 20 minutes).
 #' 
 #' **Solution a.** 
 dpois(15, (30/60)*20)
@@ -91,13 +89,6 @@ ppois(5, (30/60)*20, lower.tail = F)
 prob <- dpois(c(0:15),(30/60)*10)
 prob_val <- which(prob %in% max(prob))
 prob_val-1
-#' **Solution d.** 
-xP <- c(0:15)
-probP <- dpois(xP, (30/60)*20)
-tabP <- data.frame(hodnota=xP, prob=probP)
-barplot(tabP$prob,main="Graf of the Poisson distribution",xlab="Value",ylab="Probability",names.arg = xP, col="yellow")
-#' **Solution e.** 
-rpois(5, (30/60)*20)
 #' 
 #' # Example 4
 #' 

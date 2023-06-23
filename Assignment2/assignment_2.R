@@ -1,5 +1,5 @@
 #' ---
-#' subtitle: "Descriptive statistics"
+#' title: "Assignment 2"
 #' 
 #' output:
 #'    html_document:   
@@ -51,18 +51,16 @@ median(data$Income) # median
 #' Dispersion
 var(data$Income) # dispersion of values
 #' Standard deviation
-sd(data$Income) # distribution of numbers around the mean, the smaller is closer to the mean
+sd(data$Income) # distribution of numbers around the mean
 #' Interquartile range
-quantile(data$Income,probs = 0.75) # upper quartile, 75% of the data have greater or equal value
+quantile(data$Income,probs = 0.75) # upper quartile, 75% of the data have smaller or equal value
 quantile(data$Income,probs = 0.25) # lower quartile, 25% of the data have smaller or equal value
 #'
 quantile(data$Income,probs = 0.5) # median
 IQR(data$Income) # interquartile range - the difference between the upper and lower quartiles
-#' Variation coefficient
-sd(data$Income)/mean(data$Income)*100 #the ratio of the standard deviation to the mean, it is a standardized measure of the variance of a distribution
 #' Graph
 boxplot(data$Income,main="Boxplot - Income", xlab="", ylab="Value", col="red") 
-#' From this graph we can see outliers, specifically in this case we see one upper outlayer, further we can see the median, interquartile range, upper and lower quartile, we can also notice that this boxplot is narrow and wide so most of the values are concentrated around the median
+#' From this graph we can see outliers, specifically in this case we see one upper outlier, further we can see the median, interquartile range, upper and lower quartile, we can also notice that this boxplot is narrow so most of the values are concentrated around the median
 #'
 #' Measures of asymmetry
 skewness(data$Income) # says, that the greater concentration of values is on the right side
@@ -101,7 +99,7 @@ which(data$Income>(Q3+k2*IQR))
 #' **Solution** 
 data_3 <- unlist(data$Income[data$Education == 3])
 data_4 <- unlist(data$Income[data$Education == 4])
-#' Number of levels
+#'
 print(length(data_3))
 print(length(data_4))
 #' Level 3 has more values
@@ -137,12 +135,12 @@ sd(data_4) # measure of the distribution of numbers around the mean for level 4
 #' Interquartile range
 #' 
 #' Level 3
-quantile(data_3,probs = 0.75) # upper quartile, 75% of the data have a less or equal value
+quantile(data_3,probs = 0.75) # upper quartile, 75% of the data have a smaller or equal value
 quantile(data_3,probs = 0.25) # lower quartile, 25% of the data have a smaller or equal value
 quantile(data_3,probs = 0.5) # median
 IQR(data_3) # interquartile range - the difference between the upper and lower quartiles
 #' Level 4
-quantile(data_4,probs = 0.75) # upper quartile, 75% of the data have a less or equal value
+quantile(data_4,probs = 0.75) # upper quartile, 75% of the data have a smaller or equal value
 quantile(data_4,probs = 0.25) # lower quartile, 25% of the data have a smaller or equal value
 quantile(data_4,probs = 0.5) # median
 IQR(data_4) # interquartile range - the difference between the upper and lower quartiles
@@ -205,19 +203,19 @@ Q3<-quantile(data_3, probs=0.75)
 IQR<-IQR(data_3)
 k2 <- 3
 
-(data_3<(Q1-k2*IQR)) # has no lower extreme value
+(data_3<(Q1-k2*IQR)) # does not have a lower extreme value
 which(data_3<(Q1-k2*IQR)) # index
 
-(data_3>(Q3+k2*IQR)) # has no upper extreme value
+(data_3>(Q3+k2*IQR)) # does not have an upper extreme value
 which(data_3>(Q3+k2*IQR))# index
 #' Level 4
 Q1<-quantile(data_4, probs=0.25)   # lower quartile
 Q3<-quantile(data_4, probs=0.75)  # upper quartile
 IQR<-IQR(data_4)
 
-(data_4<(Q1-k2*IQR)) # has no lower extreme value
+(data_4<(Q1-k2*IQR)) # does not have a lower extreme value
 which(data_4<(Q1-k2*IQR))
-(data_4>(Q3+k2*IQR)) # has no upper extreme value
+(data_4>(Q3+k2*IQR)) # does not have an upper extreme value
 which(data_4>(Q3+k2*IQR))
 #' 
 #' # Example 3
@@ -235,7 +233,7 @@ data_place4 <- unlist(data$Income[data$Place == 4])
 boxplot(data_place1, data_place2, data_place3, data_place4, xlab="", ylab="Value", col="yellow")
 axis(side=1,at=(1:4),labels=c(" ","Small town", " ", "Regional town"), line = 0, tick=FALSE)
 axis(side=1,at=(1:4),labels=c("Small village"," ", "District town", " "), line = 1, tick=FALSE)
-#' From the graph, it can be seen that the median gradually increases from the Small village to the Regional town, if we compare the Small village and the Regional town, we see that the maximum value has increased and the minimum value has decreased, in the District town and the Regional town, we see that the median is above the value 14,000 different from the Small Village and the Small town
+#' From the graph, it can be seen that the median gradually increases from the Small village to the Regional town, if we compare the Small village and the Regional town, we see that the maximum value has increased and the minimum value has increased too. In the District town and the Regional town, we see that the median is above the value 14,000 different from the Small Village and the Small town
 
 vioplot(data_place1, data_place2, data_place3, data_place4, xlab="", ylab="Value", col="blue")
 axis(side=1,at=(1:4),labels=c(" ","Small town", " ", "Regional town"), line = 1, tick=FALSE)
@@ -271,6 +269,7 @@ lbls <- paste(l, c(a1, a2, a3, a4, a5))
 lbls <- paste(lbls,"%",sep="")
 pie(c(a1, a2, a3, a4, a5), main="Pie chart - Relative frequency of individual age groups", labels = lbls)
 #'
+data_len_age <- c(length(data_age1$Income),length(data_age2$Income),length(data_age3$Income),length(data_age4$Income),length(data_age5$Income))
 barplot(data_len_age, main="Bar graph - Frequency of individual age groups", names.arg=c("18-25y", "26-35y", "36-45y", "46-55y", "56+"), col="orange")
 pie(data_len_age, main="Pie chart - Number of individual age groups", labels = l)
 #'From the graphs, we can see that the largest number is in the age of group 26-35y(98), followed by the same number of groups 18-25y(51) and 46-55y(51), followed by 36-45y(20) and 56+(15)

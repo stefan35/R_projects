@@ -1,10 +1,9 @@
 # Statistical project in R
 
-### Assignment 1
+### Assignments
 
-This assignment is about the distributions(binomial distribution, hypergeometric distribution, Poisson distribution) and a couple of simple examples
-
-
-### Assignment 2
-
-This assignment is about the descriptive statistics
+These assigments are about Descriptive statistics, Parametric and Non-Parametric testing for example:
+ - Distribution testing (Binomial distribution, Hypergeometric distribution, Poisson distribution, Normal distribution, Exponential distribution,Theoretical distribution)
+ - Variance testing
+ - Tukey's test
+ - Anova
